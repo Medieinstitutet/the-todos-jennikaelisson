@@ -8,9 +8,12 @@ interface IAddToListProps {
 export const ToDoForm = (props: IAddToListProps) => {
     const [newItem, setNewItem] = useState("");
     
-    const handleAdd = () => {
+    const handleClick = (e: FormEvent) => {
+        e.preventDefault();
+
         props.addNewItem(newItem);
         setNewItem(""); 
+        //localStorage.setItem('task', JSON.stringify(newItem));
     }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,17 +22,17 @@ export const ToDoForm = (props: IAddToListProps) => {
         setNewItem(e.target.value)
     }
 
-    const handleSave = (e: FormEvent) => { // behövs denna? 
-        e.preventDefault();
+   // const handleSave = (e: FormEvent) => { // behövs denna? 
+     //   e.preventDefault();
 
-        console.log("Nytt item: ", newItem);
+       // console.log("Nytt item: ", newItem);
         
-    }
+//    }
 
     return (
-        <form onSubmit={handleSave}>
+        <form>
             <input type="text" onChange={handleChange} value={newItem}/>
-            <button onClick={handleAdd}>Add bucket list item</button>
+            <button onClick={handleClick}>Add bucket list item</button>
         </form>
     )
 }
