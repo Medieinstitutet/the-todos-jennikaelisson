@@ -3,6 +3,9 @@ import { BucketItem } from "../models/BucketItem";
 import { RemoveBucketItem } from "./RemoveBucketItem";
 import { ToDoForm } from "./ToDoForm";
 import { PresentTasks } from "./PresentTasks";
+import "../bucketlist.css"
+
+
 
 export const BucketList = () => {
   const [tasks, setTasks] = useState<BucketItem[]>(
@@ -51,8 +54,8 @@ export const BucketList = () => {
   localStorage.setItem("task", JSON.stringify(tasks));
 
   return (
-    <>
-      <h2>Bucket List</h2>
+    <div id="container">
+      <h1>Bucket List</h1>
       <ToDoForm addNewItem={addToList} />
       <button onClick={handleSort}>Sort list</button>
       <ul>
@@ -67,6 +70,6 @@ export const BucketList = () => {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 };
