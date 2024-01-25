@@ -1,35 +1,46 @@
 import { useState } from "react"
 import { BucketItem } from "../models/BucketItem";
+import { RemoveBucketItem } from "./RemoveBucketItem";
+import { ToDoForm } from "./ToDoForm";
+import { PresentTasks } from "./PresentTasks";
 
 export const BucketList = () => {
-    const [task, setTask] = useState<BucketItem[]>([
+    const [tasks, setTasks] = useState<BucketItem[]>([
         new BucketItem('Vanlife in Australia', false),
-        new BucketItem('Find a way to work remotely to be able to have the freedom I want', false), 
-        new BucketItem('Visit South Amera', false)
+        new BucketItem('Find a way to work remotely to have the freedom I want', false), 
+        new BucketItem('Visit South America', false), 
+        new BucketItem('Buy land and build a tiny house', false)
     ]);
 
-    const handleTick = () => {
-        
+    const taskDone = (bucketActivity: string) => {
+        setTasks(tasks.map((task) => { 
+            if (task.bucketActivity == bucketActivity) {
+                return { ...task, isDone: true };
+            } else {
+                return task;
+            } 
+            })
+        );        
     }
 
     const removeBucketItem = (bucketActivity: string) => {
-        setTask(task.filter((bucketItem) => bucketItem.bucketActivity !== bucketActivity))
+        setTasks(tasks.filter((bucketItem) => bucketItem.bucketActivity !== bucketActivity))
     }
+
+
     return ( 
         <>
         <h2>Bucket List</h2>
+        <ToDoForm />
         <ul>
-            {task.map((bucketItem) => {
+            {tasks.map((task) => {
                 return (
                     <li>
-                        <h4>{bucketItem.bucketActivity}</h4>
-                        <p>Done?<input type="checkbox" checked={bucketItem.isDone} onChange={handleTick}/></p>
-                        <button onClick={() => removeBucketItem(bucketItem.bucketActivity)}>Remove bucket list item</button>
+                        <PresentTasks items={task} finishedTask={taskDone} key={task.bucketActivity}/>
+                        <RemoveBucketItem RemoveItem={() => removeBucketItem(task.bucketActivity)}/>
                     </li>
                 )
             })}
-            
-            
         </ul>
         </>
     )
