@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(248, 241, 152);
+    background-color:rgb(248, 234, 152);
     
 }
 
@@ -11,24 +11,22 @@ body {
 }
 
 button {
-    background-color: rgb(201, 158, 230);
+    background-color: rgb(211, 146, 255);
     color: white;
     font-family: 'Acme', sans-serif;
-
+    padding: 5px 15px;
+    margin: 0px 5px 10px 5px;
 }
 
 button:hover {
     background-color: rgb(104, 33, 152);
 }
 
-form {
-    padding-bottom: 15px;
-}
-
 ul {
     padding-left: 0px;
     overflow-y: scroll;
-    max-height: 300px; /* Justera höjden beroende på ditt behov */
+    max-height: 300px; 
+    scrollbar-color:  rgb(211, 146, 255) rgb(229, 143, 157);
 }
 
 li {
@@ -63,5 +61,10 @@ input {
 }
 
 input:focus {
-    outline: none; /* Detta tar bort standard-fokusramen i vissa webbläsare */
+    outline: none; 
+}
+
+#form-sort {
+    display: flex;
+    padding: 0px 10px;
 }
