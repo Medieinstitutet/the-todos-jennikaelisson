@@ -11,7 +11,7 @@ export const BucketList = () => {
       localStorage.getItem("task") ||
         JSON.stringify([
           new BucketItem("Vanlife in Australia", false),
-          new BucketItem("Find a way to work remotely", false),
+          new BucketItem("Find a remote job", false),
           new BucketItem("Visit South America", false),
           new BucketItem("Buy land and build a tiny house", false),
         ])
