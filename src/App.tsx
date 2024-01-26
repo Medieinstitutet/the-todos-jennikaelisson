@@ -1,5 +1,5 @@
-import './App.css'
-import { BucketList } from './components/BucketList'
+import './App.css';
+import { BucketList } from './components/BucketList';
 
 function App() {
   
