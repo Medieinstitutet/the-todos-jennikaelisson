@@ -27,6 +27,7 @@ ul {
     overflow-y: scroll;
     max-height: 300px; 
     scrollbar-color:  rgb(211, 146, 255) rgb(229, 143, 157);
+    scroll-behavior: smooth;
 }
 
 li {
