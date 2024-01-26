@@ -5,8 +5,6 @@ import { ToDoForm } from "./ToDoForm";
 import { PresentTasks } from "./PresentTasks";
 import "../bucketlist.css"
 
-
-
 export const BucketList = () => {
   const [tasks, setTasks] = useState<BucketItem[]>(
     JSON.parse(
@@ -48,7 +46,6 @@ export const BucketList = () => {
         a.bucketActivity.localeCompare(b.bucketActivity)
       )
     );
-    // setTasks(tasks.slice().sort((a, b) => a.bucketActivity.localeCompare(b.bucketActivity)));
   };
 
   localStorage.setItem("task", JSON.stringify(tasks));
@@ -56,8 +53,10 @@ export const BucketList = () => {
   return (
     <div id="container">
       <h1>Bucket List</h1>
-      <ToDoForm addNewItem={addToList} />
-      <button onClick={handleSort}>Sort list</button>
+      <div id="form-sort">
+        <ToDoForm addNewItem={addToList} />
+        <button id="sort" onClick={handleSort}>Sort</button>
+      </div>
       <ul>
         {tasks.map((task) => {
           return (
